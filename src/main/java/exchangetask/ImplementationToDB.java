@@ -116,11 +116,11 @@ public class ImplementationToDB implements AdvancedExchangeInterface, QueryInter
                     order2.setPrice(resultSet.getInt("price"));
                     order2.setSize(resultSet.getInt("size"));
                     order2.setWorking(resultSet.getBoolean("isWorking"));
-                    if(order2.getSize()<=order.getSize()&&order2.getPrice()<=order.getPrice()){
+                    if(order2.getSize()<=order.getSize()){
                         order.setSize(order.getSize()-order2.getSize());
                         order2.setSize(0);
                         updateOrder(order2);
-                    }else if((order2.getSize()>=order.getSize()&&order2.getPrice()<=order.getPrice())) {
+                    }else{
                         order2.setSize(order2.getSize()-order.getSize());
                         order.setSize(0);
                         updateOrder(order2);
@@ -147,11 +147,11 @@ public class ImplementationToDB implements AdvancedExchangeInterface, QueryInter
                         order2.setPrice(resultSet.getInt("price"));
                         order2.setSize(resultSet.getInt("size"));
                         order2.setWorking(resultSet.getBoolean("isWorking"));
-                        if(order2.getSize()<=order.getSize()&&order2.getPrice()>=order.getPrice()){
+                        if(order2.getSize()<=order.getSize()){
                             order.setSize(order.getSize()-order2.getSize());
                             order2.setSize(0);
                             updateOrder(order2);
-                        }else if((order2.getSize()>=order.getSize()&&order2.getPrice()>=order.getPrice())) {
+                        }else{
                             order2.setSize(order2.getSize()-order.getSize());
                             order.setSize(0);
                             updateOrder(order2);
